@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { Star } from "lucide-react";
 import {
@@ -135,7 +134,15 @@ const Dashboard = () => {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Popular Courses</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {courses.map((course) => (
-              <Card key={course.id} className="hover:shadow-lg transition-shadow">
+              <Card key={course.id} className="hover:shadow-lg transition-shadow relative">
+                {course.requiresCoding && (
+                  <Badge 
+                    variant="destructive" 
+                    className="absolute -top-2 -right-2 rotate-12 transform transition-transform hover:rotate-0"
+                  >
+                    Coding Required
+                  </Badge>
+                )}
                 <CardHeader>
                   <CardTitle className="text-lg">{course.name}</CardTitle>
                   <CardDescription>{course.code}</CardDescription>
@@ -155,15 +162,6 @@ const Dashboard = () => {
                       <StarRating rating={course.difficulty} />
                     </div>
                   </div>
-                  {course.requiresCoding && (
-                    <div>
-                      <Badge variant="secondary" className="mb-2">Coding Required</Badge>
-                      <div>
-                        <p className="text-sm font-medium text-gray-500">Coding Difficulty:</p>
-                        <StarRating rating={course.codingDifficulty} />
-                      </div>
-                    </div>
-                  )}
                 </CardContent>
                 <CardFooter className="flex justify-between">
                   <button
