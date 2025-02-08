@@ -40,7 +40,7 @@ export function AddReviewForm({ isOpen, onClose, course }: AddReviewFormProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Add Course Review</DialogTitle>
           <DialogDescription>
@@ -75,10 +75,10 @@ export function AddReviewForm({ isOpen, onClose, course }: AddReviewFormProps) {
             <div className="space-y-2">
               <Label>Semester Term</Label>
               <Select value={semesterTerm} onValueChange={setSemesterTerm}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-white">
                   <SelectValue placeholder="Select term" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="Spring">Spring</SelectItem>
                   <SelectItem value="Summer">Summer</SelectItem>
                   <SelectItem value="Fall">Fall</SelectItem>
@@ -89,10 +89,10 @@ export function AddReviewForm({ isOpen, onClose, course }: AddReviewFormProps) {
             <div className="space-y-2">
               <Label>Academic Year</Label>
               <Select value={academicYear} onValueChange={setAcademicYear}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-white">
                   <SelectValue placeholder="Select year" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   {years.map((year) => (
                     <SelectItem key={year} value={year.toString()}>
                       {year}
@@ -107,10 +107,10 @@ export function AddReviewForm({ isOpen, onClose, course }: AddReviewFormProps) {
           <div className="space-y-2">
             <Label>Professor Name(s)</Label>
             <Select value={selectedProfessor} onValueChange={setSelectedProfessor}>
-              <SelectTrigger>
+              <SelectTrigger className="bg-white">
                 <SelectValue placeholder="Select professor" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 {course.professors.map((professor) => (
                   <SelectItem key={professor} value={professor}>
                     {professor}
@@ -125,7 +125,7 @@ export function AddReviewForm({ isOpen, onClose, course }: AddReviewFormProps) {
                 value={otherProfessor}
                 onChange={(e) => setOtherProfessor(e.target.value)}
                 placeholder="Enter professor's name"
-                className="mt-2 w-full px-3 py-2 border rounded-md"
+                className="mt-2 w-full px-3 py-2 border rounded-md bg-white"
               />
             )}
           </div>
