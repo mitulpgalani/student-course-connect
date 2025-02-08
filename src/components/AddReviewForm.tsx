@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   Dialog,
@@ -36,6 +37,15 @@ export function AddReviewForm({ isOpen, onClose, course }: AddReviewFormProps) {
   const [otherProfessor, setOtherProfessor] = useState<string>("");
   const [courseType, setCourseType] = useState<string>("");
   const [deliveryMode, setDeliveryMode] = useState<string>("");
+  
+  // Add missing state variables
+  const [teachingQuality, setTeachingQuality] = useState<number>(0);
+  const [courseValue, setCourseValue] = useState<number>(0);
+  const [evaluationMethods, setEvaluationMethods] = useState<string[]>([]);
+  const [otherEvaluationMethod, setOtherEvaluationMethod] = useState<string>("");
+  const [examFormat, setExamFormat] = useState<string[]>([]);
+  const [otherExamFormat, setOtherExamFormat] = useState<string>("");
+  const [gradingLeniency, setGradingLeniency] = useState<number>(0);
 
   const years = Array.from({ length: 6 }, (_, i) => 2025 - i);
 
@@ -314,3 +324,4 @@ export function AddReviewForm({ isOpen, onClose, course }: AddReviewFormProps) {
     </Dialog>
   );
 }
+
