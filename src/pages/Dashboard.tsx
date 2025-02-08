@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Star } from "lucide-react";
 import {
@@ -10,6 +10,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AddReviewForm } from "@/components/AddReviewForm";
 
 // Mock course data
 const courses = [
@@ -90,19 +91,19 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [selectedCourse, setSelectedCourse] = useState<typeof courses[0] | null>(null);
+  const [isAddReviewOpen, setIsAddReviewOpen] = useState(false);
 
   const handleSignOut = () => {
-    // For now, just navigate back to login
     navigate("/");
   };
 
-  const handleAddReview = (courseId: number) => {
-    // TODO: Implement review form navigation
-    console.log(`Add review for course ${courseId}`);
+  const handleAddReview = (course: typeof courses[0]) => {
+    setSelectedCourse(course);
+    setIsAddReviewOpen(true);
   };
 
   const handleViewReviews = (courseId: number) => {
-    // TODO: Implement review modal
     console.log(`View reviews for course ${courseId}`);
   };
 
@@ -168,7 +169,7 @@ const Dashboard = () => {
                 </CardContent>
                 <CardFooter className="flex justify-between">
                   <button
-                    onClick={() => handleAddReview(course.id)}
+                    onClick={() => handleAddReview(course)}
                     className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                   >
                     Add Review
@@ -184,6 +185,14 @@ const Dashboard = () => {
             ))}
           </div>
         </section>
+
+        {selectedCourse && (
+          <AddReviewForm
+            isOpen={isAddReviewOpen}
+            onClose={() => setIsAddReviewOpen(false)}
+            course={selectedCourse}
+          />
+        )}
       </main>
     </div>
   );
