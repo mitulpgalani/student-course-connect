@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { Star } from "lucide-react";
 import {
@@ -134,14 +135,16 @@ const Dashboard = () => {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Popular Courses</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {courses.map((course) => (
-              <Card key={course.id} className="hover:shadow-lg transition-shadow relative">
+              <Card key={course.id} className="hover:shadow-lg transition-shadow relative overflow-hidden">
                 {course.requiresCoding && (
-                  <Badge 
-                    variant="destructive" 
-                    className="absolute -top-2 -right-2 rotate-12 transform transition-transform hover:rotate-0"
-                  >
-                    Coding Required
-                  </Badge>
+                  <div className="absolute -right-12 top-6 rotate-45 transform">
+                    <Badge 
+                      variant="destructive" 
+                      className="w-36 flex justify-center items-center py-1 bg-[#ea384c]"
+                    >
+                      Coding
+                    </Badge>
+                  </div>
                 )}
                 <CardHeader>
                   <CardTitle className="text-lg">{course.name}</CardTitle>
